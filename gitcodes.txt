@@ -1,0 +1,113 @@
+git config --list --show-origin       //shows the origin
+
+git config --global user.name "praveen"    //create user
+git config --global user.email "praveenkumarfish@gmail.com"      //create email
+git config --list     //lists varibales
+
+//to change editior
+git config --global code.editor "nano" or "notepad" or "vi" //to change text editor(by default its vi)
+
+//to create local repository 
+//we can take current dir in local machine or take central repo and use as local repo
+git init //to create current dir as repo
+git init *repo name* //give repo name
+git clone *click code and copy the url in central repo and paste here* //cloning central repo
+
+git help *cmd name*
+or
+git *cmd name* --help //to see usage of cmd
+or 
+man git - *cmd*
+
+git status //to check in which stage the files are in.
+
+git add * //move all the files to tracked area or staging area
+git add *file name* //move the specific file to staging area
+
+git status -s or git status --short //to short the output of the status
+
+.gitignore (inside that file put **any name to ignore* like *.py or *index.html) //to ignore the files to be staged 
+
+//while commiting the files on working area will not get commited unless it is staged
+git commit //commit all the files in staging area, it opens a file to enter a message or 
+git commit -m "*message*" //commit with msg in cmd itself
+
+git log//to see commit history
+git log -p -2 // show latest two commits
+git log --stat //show abbrevated -p 
+git log --pretty=format:%h-%n,%an //(like many options to format the output )
+
+git log --since=2.weeks
+
+//undoing the things
+git commit --amend //take previous commit and overwrite the commit same can be used whn commit msg is wrong by not staging any thing again but --amend
+
+//unstaging the staged file
+git restore --staged *file name*
+
+//unmodifying a modified file
+git restore *file name* //restore to pervious version cannot be undone
+
+git remote //shows the orign of cloned repo from central repo
+git remote -v //shows url of the cloned repo
+git remote add *short name* *url of the central repo* // set your own name for central repo to push 
+git push origin //push the file to central repo
+
+//to know new changes in central repo
+git fetch origin  //origin or shortname
+ 
+//to automatically fetch and merge the clone to local repo
+git pull origin  //origin or shortname
+
+//pushing to your remote
+git push *remote ref name* *branch* //origin or shortname
+
+//for addtional info of remote
+git remote show origin //origin or shortname
+
+//rename remote
+git remote rename *old name* *new name*
+
+//remove remote
+git remote remove *origin name*
+
+//Tagging a git  //tags are used once its commited
+//git has ability to specific points in repo history as being important
+git tag //list tags in git 
+//tage are of lightweight and annotated tags(recomended)
+git tag -a *version name* -m "*message*"
+git show *ver name* //show tag 
+git push *origin* *tag name*//push tag name to central repo
+git push *origin* --tags //push all the tags
+
+//deleting a tag
+git tag -d *tag name* //delete tag in local repo
+git push origin --delete *tag name*
+
+
+git checkout *tag name* //changes in that ver
+
+//branching and merging
+//application works from the master branch we need to create new branch to work with it.we shld do anything in master branch
+git branch //shows branch
+git branch *branch name*//create branch 
+git checkout *branch name*//move to another branch and all contents of current branch is moved to new branch.
+git push *origin* *branch* -f //merge the branch to master branch
+git merge *branch name* //need to be in master repo and ex this to merge the branch in local repo
+git branch -d *branch name* //delete branch 
+
+//solving merge conflicts
+
+//either we can use , git pull by reverting changes use git pull and then add changes and then commit and push
+git pull //for new changes 
+//or
+git pull --rebase
+git mergetool  // to merge the changes it opens 4 files 
+git rebase --continue  // to commit the modified file and then 
+git push
+
+//GIT Hooks
+//its like event triggered scripts
+//in local repo its git hooks in central its called web hooks
+//it is inside .git directory in local repo , it has .sample ext to prevent from executing
+
