@@ -1,3 +1,4 @@
+merge test
 git config --list --show-origin       //shows the origin
 
 git config --global user.name "praveen"    //create user
